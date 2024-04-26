@@ -8,6 +8,8 @@ from enemy_data import ENEMY_DATA
 class Enemy(pg.sprite.Sprite):
     def __init__(self, enemy_type,waypoints, images):
         pg.sprite.Sprite.__init__(self)
+        self.movement = None
+        self.target = None
         self.waypoints = waypoints
         self.pos = Vector2(waypoints[0])
         self.target_waypoint = 1
@@ -32,12 +34,13 @@ class Enemy(pg.sprite.Sprite):
         else:
             self.kill()
             world.health -= 1
+            world.missed_enemies += 1
 
         # Calculate distance to target waypoint
         dist = self.movement.length()
         # Check if the enemy has reached the target waypoint
-        if dist >= self.speed:
-            self.pos += self.movement.normalize() * self.speed
+        if dist >= (self.speed * world.game_speed):
+            self.pos += self.movement.normalize() * (self.speed * world.game_speed)
         else:
             if dist != 0:
                 self.pos += self.movement.normalize() * dist
@@ -55,5 +58,6 @@ class Enemy(pg.sprite.Sprite):
 
     def check_alive(self, world):
         if self.health <= 0:
+            world.killed_enemies += 1
             world.money += c.KILL_REWARD
             self.kill()

@@ -1,22 +1,22 @@
 TURRET_DATA = [
     {
         # 1
-        "range": 90,
-        "cooldown": 1500,
+        "range": 100,
+        "cooldown": 300,
     },
     {
         # 2
-        "range": 110,
-        "cooldown": 1200,
+        "range": 120,
+        "cooldown": 150,
     },
     {
         # 3
-        "range": 125,
-        "cooldown": 1000,
+        "range": 140,
+        "cooldown": 120,
     },
     {
         # 4
-        "range": 150,
-        "cooldown": 900,
+        "range": 160,
+        "cooldown": 60,
     }
 ]
