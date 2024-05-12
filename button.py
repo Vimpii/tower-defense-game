@@ -1,5 +1,6 @@
 import pygame as pg
 
+
 class Button:
     def __init__(self, x, y, image, single_click):
         self.image = image
@@ -14,7 +15,7 @@ class Button:
         pos = pg.mouse.get_pos()
         # Check if mouse is over the button or clicked on the button
         if self.rect.collidepoint(pos):
-            if pg.mouse.get_pressed()[0] == 1 and self.clicked == False:
+            if pg.mouse.get_pressed()[0] == 1 and self.clicked is False:
                 action = True
                 # If button is single click, set clicked to True
                 if self.single_click:
